@@ -1,0 +1,31 @@
+@import "styles/styles-utils.scss";
+
+.searchbar {
+    width: 50%;
+    padding: $spacing-xs 0;
+    position: relative;
+
+    &__input {
+        -webkit-appearance: none;
+        border: 1px solid #ddd;
+        height: auto;
+        padding: $spacing-s;
+        font-size: $font-size-s;
+        border-radius: 4px;
+        width: 100%;
+    }
+    &__input::placeholder {
+        color: gray;
+    }
+    &__input:focus {
+        box-shadow: 0 0 1px 2px $primary-color;
+    }
+    .search-icon {
+        color: #ccc !important;
+        font-size: $font-size-l;
+        flex-grow: 1;
+        position: absolute;
+        right: 0px;
+        top: 16px;
+    }
+}

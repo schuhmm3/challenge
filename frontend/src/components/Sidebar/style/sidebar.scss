@@ -1,0 +1,12 @@
+@import "styles/styles-utils.scss";
+.sidebar {
+    width: 200px;
+    background-color: $primary-color;
+    height: 100vh;
+    .logo {
+        width: 100%;
+        img {
+            width: 100%;
+        }
+    }
+}
