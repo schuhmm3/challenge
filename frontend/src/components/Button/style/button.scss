@@ -1,0 +1,108 @@
+.button {
+    align-items: center;
+    font-family: $font-primary;
+    padding: 10px 14px;
+    background-color: $color-primary;
+    cursor: pointer;
+    border: none;
+    border-radius: 4px;
+    @include themify($themes) {
+        color: themed("textColorBase");
+    }
+
+    &.primary {
+        color: white;
+        &:hover:not(:disabled) {
+            background-color: $color-primary-darker-1;
+        }
+    }
+
+    &.default {
+        @include themify($themes) {
+            background-color: themed("defaultButtonBackground");
+            color: themed("defaultButtonColor");
+        }
+
+        &:hover:not(:disabled) {
+            @include themify($themes) {
+                background-color: themed("defaultButtonBackgroundHover");
+            }
+        }
+    }
+
+    &.outlined {
+        background-color: transparent;
+        @include themify($themes) {
+            border: 1px solid themed("textColorBase");
+        }
+
+        &:hover:not(:disabled) {
+            @include themify($themes) {
+                background-color: themed("outlineButtonBackgroundHover");
+                color: themed("outlineButtonColor");
+            }
+        }
+    }
+
+    &:focus {
+        box-shadow: 0 0 1pt 1pt $color-primary;
+    }
+
+    &:disabled {
+        cursor: not-allowed;
+        opacity: 0.8;
+    }
+
+    &.loading {
+        opacity: 1;
+        cursor: not-allowed;
+
+        .children {
+            margin-left: 12px;
+        }
+
+        .lds-ring {
+            display: inline-block;
+            position: relative;
+            width: 20px;
+            height: 20px;
+        }
+
+        .lds-ring {
+            div {
+                box-sizing: border-box;
+                display: block;
+                position: absolute;
+                width: 20px;
+                height: 20px;
+                border-radius: 50%;
+                animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+                @include themify($themes) {
+                    border: 2px solid white;
+                    border-color: white transparent transparent transparent;
+                }
+
+                &:nth-child(1) {
+                    animation-delay: -0.45s;
+                }
+
+                &:nth-child(2) {
+                    animation-delay: -0.3s;
+                }
+
+                &:nth-child(3) {
+                    animation-delay: -0.15s;
+                }
+            }
+        }
+
+        @keyframes lds-ring {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+    }
+}
