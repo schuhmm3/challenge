@@ -1,9 +1,7 @@
-import  { ReactNode } from "react";
 export type ButtonProps = {
-    children: ReactNode;
-    onClick?: () => void;
+    textButton: string;
+    color: string;
+    css?: string;
+    onClickedButton: () => void;
     disabled?: boolean;
-    type?: "primary" | "default" | "outlined";
-    loading?: boolean;
-    className?: string;
   };

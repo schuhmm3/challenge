@@ -1,5 +1,4 @@
-// 'three-bounce': { className: 'spinner_three-bounce', divCount: 3 },
-@import "../../styles/styles-utils.scss";
+@import "styles/styles-utils.scss";
 
 .spinner {
     height: 100%;
@@ -10,9 +9,7 @@
     justify-content: center;
     .spinner_message {
         margin-top: $spacing-xs;
-        @include themify($themes) {
-            color: themed("textColorBase");
-        }
+        color: gray;
     }
     .spinner_three-bounce {
         height: 24px;
@@ -21,9 +18,7 @@
         margin-right: $spacing-xxs;
         width: 24px;
         height: 24px;
-        @include themify($themes) {
-            background-color: themed("spinnerColor");
-        }
+        background-color: gray;
         border-radius: 100%;
         display: inline-block;
 

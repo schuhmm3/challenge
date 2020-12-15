@@ -1,38 +1,25 @@
 import React from "react";
-/** types */
-import {ButtonProps} from "./types";
+/** Types */
+import { ButtonProps } from "./types";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+import "./style/button.scss";
+
 export const Button = ({
-  children,
-  onClick,
-  disabled,
-  type,
-  loading,
-  className,
-}: ButtonProps) => (
-  <button
-    onClick={onClick}
-    type="button"
-    className={`button ${
-      type === "outlined"
-        ? "outlined"
-        : type === "default"
-        ? "default"
-        : type === "primary"
-        ? "primary"
-        : loading
-        ? "loading"
-        : ""
-    } ${className ? className : ""}`}
-    disabled={disabled}
-  >
-    {loading && (
-      <div className="lds-ring">
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-      </div>
-    )}
-    <div className="children">{children}</div>
-  </button>
-);
+    textButton,
+    color,
+    onClickedButton,
+    css,
+    disabled = false,
+}: ButtonProps) => {
+    return (
+        <button
+            type="button"
+            className={`go-button go-button__${color} ${css ? css : ""}`}
+            onClick={() => onClickedButton()}
+            disabled={disabled}
+        >
+            {textButton}
+        </button>
+    );
+};

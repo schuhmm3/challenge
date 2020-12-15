@@ -1,10 +1,12 @@
 import React from "react";
 /**Libraries */
 import classnames from "classnames";
+/** types */
+import { SpinnerProps } from "./types";
 /**Styles */
-import "./spinner.scss";
+import "./style/spinner.scss";
 
-export const Spinner = ({ message, size }) => {
+export const Spinner = ({ message, size } : SpinnerProps) => {
     const spinnerClass = classnames("spinner_three-bounce", {
         [`spinner_three-bounce--${size}`]: size,
     });
