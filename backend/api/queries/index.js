@@ -1,0 +1,11 @@
+const QUERY_GET_ALL_CHEMICAL_TYPE_1 = 'SELECT * FROM chemical_type_1';
+const QUERY_GET_ALL_CHEMICAL_TYPE_2 = 'SELECT * FROM chemical_type_2';
+const QUERY_SEARCH_BY_CHEMICAL_NAME = 'SELECT * FROM chemical_type_1 WHERE chemical_type_1 LIKE "%"?"%"';
+
+
+module.exports = {
+    QUERY_GET_ALL_CHEMICAL_TYPE_1,
+    QUERY_GET_ALL_CHEMICAL_TYPE_2,
+    QUERY_SEARCH_BY_CHEMICAL_NAME
+
+}

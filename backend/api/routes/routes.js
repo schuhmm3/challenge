@@ -3,5 +3,6 @@ module.exports = app => {
 
     /** USER ROUTES */
     app.route("/api/chemical_type_1").get(chemicalController.getAllChemicalTypes_1);
+    app.route("/api/chemical_type_1/search/").get(chemicalController.getAllChemicalNames)
   
   };
