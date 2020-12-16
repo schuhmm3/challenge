@@ -2,7 +2,7 @@
 import React from "react";
 
 // This is the table constant/settings which needed to render table elements
-const tableConstants = handleEdit => {
+const tableConstants = () => {
     return [
         {
             title: "Name",
@@ -14,19 +14,6 @@ const tableConstants = handleEdit => {
             title: "Documents",
             render: rowData => {
                 return <span>{rowData.patent_title}</span>;
-            },
-        },
-        {
-            title: "Action",
-            render: rowData => {
-                return (
-                    <button
-                        className="btn btn-warning"
-                        onClick={handleEdit(rowData)}
-                    >
-                        Edit
-                    </button>
-                );
             },
         },
     ];

@@ -2,7 +2,6 @@ import {
     getEnvVariable,
     REACT_APP_API,
 } from "services/environmentService";
-
 import { STATUS_OK, ERROR } from "constants/api";
 import axios from "axios";
 

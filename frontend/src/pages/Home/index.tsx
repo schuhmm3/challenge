@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 /** Libraries */
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBook } from "@fortawesome/free-solid-svg-icons";
@@ -10,8 +10,10 @@ import { BasicTable } from "components/BasicTable";
 import { DocumentCard } from "components/DocumentCard";
 import { Spinner } from "components/Spinner";
 import tableConstants from "components/BasicTable/tableConstants";
+/** Context  */
+import { ChemicalDataContext } from "context/chemicalData/chemicalDataContext";
 /** Services */
-import { getChemicalTypes } from "./services/homepageService";
+import { getChemicalTypes } from "services/homePageService";
 /** Types */
 import { ChemicalDataState } from "./types";
 /** Utils */
@@ -23,37 +25,32 @@ import LogoBasf from "assets/png/basf-logo-transparent.png";
 /** Styles */
 import "./style/home.scss";
 export const Home = () => {
-    const [query, setQuery] = useState<string>("");
+    const chemicalDataContext = useContext(ChemicalDataContext);
+    const { chemicalData, query, getChemicalData, setQueryData, clearChemicalData } = chemicalDataContext;
     const [loading, setLoading] = useState<boolean>(false);
-    const [data, setData] = useState<ChemicalDataState[]>([]);
-
+ 
     const handleQuerySearch = (text: string) => {
         if(!text){
-            setQuery("");
+            setQueryData("");
         }
-        setQuery(text);
+        setQueryData(text);
     }
 
     const submitQuery = async() => {
         if(query === ""){
-            setData([]);
+            clearChemicalData()
         }else{
             setLoading(true);
-            const chemicalTypes = await getChemicalTypes(query);
-            setData(chemicalTypes);
-            setQuery("");
+            getChemicalData(query)
+            setQueryData(query);
             setLoading(false);   
         }
-    }
-
-    const handleEdit = (item:any) => () => {
-        // write your logic
-        console.log(JSON.stringify(item))
     }
 
     return (
         <Layout>
             <div className="homePage">
+                {console.log("THIS IS CONTEXT RESULT =>", chemicalData)}
                 <div className= "homePage__logo">
                     <img src={LogoBasf} />
                 </div>
@@ -70,7 +67,7 @@ export const Home = () => {
                         {
                             loading 
                                 ?   <Spinner message={SPINNER_MESSAGE} size={200} /> 
-                                :   data.length > 0 && (
+                                :   chemicalData.length > 0 && (
                                     <>
                                         <div className="homePage-content__card">
                                             <DocumentCard>
@@ -85,13 +82,13 @@ export const Home = () => {
                                                     {TOTAL_DOCUMENTS}
                                                 </div>
                                                 <div className="homePage-content__card-number">
-                                                    {countTotalUniquePatents(data)}
+                                                    {countTotalUniquePatents(chemicalData)}
                                                 </div>
                                             </DocumentCard>
                                         </div>
                                         <div className = "homePage-content__table">
-                                            <BasicTable cols={tableConstants(handleEdit)} data={data} striped />
-                                            <BasicTable cols={tableConstants(handleEdit)} data={data} striped />
+                                            <BasicTable cols={tableConstants()} data={chemicalData} striped />
+                                            <BasicTable cols={tableConstants()} data={chemicalData} striped />
                                         </div>
                                     </>
                             )
