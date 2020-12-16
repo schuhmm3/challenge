@@ -1,11 +1,11 @@
 export const data = [
     {
         id: 1,
-        name: "Leanne Graham",
-        username: "Bret",
-        email: "Sincere@april.biz",
-        phone: "1-770-736-8031 x56442",
-        website: "hildegard.org",
+        name: "test 1",
+        username: "test 1",
+        email: "test1@test1",
+        phone: "test1",
+        website: "test1",
     },
     {
         id: 2,

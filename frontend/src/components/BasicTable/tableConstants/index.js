@@ -5,39 +5,15 @@ import React from "react";
 const tableConstants = handleEdit => {
     return [
         {
-            title: "ID",
-            render: rowData => {
-                return <span>{rowData.id}</span>;
-            },
-        },
-        {
             title: "Name",
             render: rowData => {
-                return <span>{rowData.name}</span>;
+                return <span>{rowData.chemical_type_1}</span>;
             },
         },
         {
-            title: "Username",
+            title: "Documents",
             render: rowData => {
-                return <span>{rowData.username}</span>;
-            },
-        },
-        {
-            title: "Email",
-            render: rowData => {
-                return <span>{rowData.email}</span>;
-            },
-        },
-        {
-            title: "Phone",
-            render: rowData => {
-                return <span>{rowData.phone}</span>;
-            },
-        },
-        {
-            title: "Website",
-            render: rowData => {
-                return <span>{rowData.website}</span>;
+                return <span>{rowData.patent_title}</span>;
             },
         },
         {

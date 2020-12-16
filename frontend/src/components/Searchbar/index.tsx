@@ -8,7 +8,7 @@ import { SearchbarProps} from "./types";
 import "./style/searchbar.scss";
 
 export const Searchbar = (
-    { value, placeholder, onChange, iconName } : SearchbarProps) => {
+    { value, placeholder, onChange, onClickSearchbar, iconName } : SearchbarProps) => {
     return(
         <div className="searchbar">
             <input
@@ -20,13 +20,14 @@ export const Searchbar = (
                 onChange={e => onChange(e.target.value)}
                 data-testid="search-input"
             />
-            <span className="search-icon">
+
+            <div className="searchbar__icon" onClick={() => onClickSearchbar()}>
                 {iconName && (
                     <FontAwesomeIcon
                         icon={faSearch}
                     ></FontAwesomeIcon>
                 )}
-            </span>
+            </div>
         </div>
     )
 }

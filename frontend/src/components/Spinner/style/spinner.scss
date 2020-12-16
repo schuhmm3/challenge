@@ -9,7 +9,7 @@
     justify-content: center;
     .spinner_message {
         margin-top: $spacing-xs;
-        color: gray;
+        color: $background-light;
     }
     .spinner_three-bounce {
         height: 24px;
@@ -18,7 +18,7 @@
         margin-right: $spacing-xxs;
         width: 24px;
         height: 24px;
-        background-color: gray;
+        background-color: $background-light;
         border-radius: 100%;
         display: inline-block;
 
