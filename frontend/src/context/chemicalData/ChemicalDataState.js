@@ -2,17 +2,13 @@ import React, { useReducer } from "react";
 import { ChemicalDataContext } from "./chemicalDataContext";
 import chemicalDataReducer from "./chemicalDataReducer";
 import { getChemicalTypes } from "services/homePageService";
-import {
-    GET_CHEMICAL_DATA,
-    SET_CHEMICAL_DATA,
-    CLEAR_CHEMICAL_DATA,
-    SET_QUERY,
-} from "../types";
+import { GET_CHEMICAL_DATA, CLEAR_CHEMICAL_DATA, SET_QUERY } from "../types";
 
 export const ChemicalDataState = ({ children }: any) => {
     const initialState = {
         query: "",
         chemicalData: [],
+        loading: false,
     };
 
     const [state, dispatch] = useReducer(chemicalDataReducer, initialState);

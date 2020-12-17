@@ -1,9 +1,4 @@
-import {
-    GET_CHEMICAL_DATA,
-    SET_CHEMICAL_DATA,
-    CLEAR_CHEMICAL_DATA,
-    SET_QUERY,
-} from "../types";
+import { GET_CHEMICAL_DATA, CLEAR_CHEMICAL_DATA, SET_QUERY } from "../types";
 
 export default (state, action) => {
     switch (action.type) {
@@ -12,13 +7,6 @@ export default (state, action) => {
                 ...state,
                 chemicalData: action.payload,
             };
-
-        case SET_CHEMICAL_DATA:
-            return {
-                ...state,
-                chemicalData: [],
-            };
-
         case CLEAR_CHEMICAL_DATA:
             return {
                 ...state,

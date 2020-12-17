@@ -6,16 +6,11 @@ import { faBook } from "@fortawesome/free-solid-svg-icons";
 import { Layout } from "containers/Layout";
 /** Components */
 import { Searchbar } from "components/Searchbar";
-import { BasicTable } from "components/BasicTable";
+import { ResultBox } from "components/ResultBox";
 import { DocumentCard } from "components/DocumentCard";
 import { Spinner } from "components/Spinner";
-import tableConstants from "components/BasicTable/tableConstants";
 /** Context  */
 import { ChemicalDataContext } from "context/chemicalData/chemicalDataContext";
-/** Services */
-import { getChemicalTypes } from "services/homePageService";
-/** Types */
-import { ChemicalDataState } from "./types";
 /** Utils */
 import { countTotalUniquePatents } from "utils/functions";
 /** Constants */
@@ -37,12 +32,13 @@ export const Home = () => {
     }
 
     const submitQuery = async() => {
+        
         if(query === ""){
             clearChemicalData()
         }else{
             setLoading(true);
-            getChemicalData(query)
-            setQueryData(query);
+            await getChemicalData(query);
+            setQueryData("");
             setLoading(false);   
         }
     }
@@ -50,7 +46,6 @@ export const Home = () => {
     return (
         <Layout>
             <div className="homePage">
-                {console.log("THIS IS CONTEXT RESULT =>", chemicalData)}
                 <div className= "homePage__logo">
                     <img src={LogoBasf} />
                 </div>
@@ -86,9 +81,9 @@ export const Home = () => {
                                                 </div>
                                             </DocumentCard>
                                         </div>
-                                        <div className = "homePage-content__table">
-                                            <BasicTable cols={tableConstants()} data={chemicalData} striped />
-                                            <BasicTable cols={tableConstants()} data={chemicalData} striped />
+                                        <div className = "homePage-content__results">
+                                            <ResultBox title={"TITLE 1"} data={chemicalData} />
+                                            <ResultBox title={"TITLE 2"} data={chemicalData} />
                                         </div>
                                     </>
                             )

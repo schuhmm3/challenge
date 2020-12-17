@@ -1,0 +1,36 @@
+@import "styles/styles-utils.scss";
+.resultBox {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: $spacing-xs;
+    background-color: $background-light;
+    &__title {
+        padding: $spacing-s;
+    }
+    &__searchbar {
+        padding: $spacing-s;
+    }
+    &__table {
+        overflow-y: auto;
+        max-height: 300px;
+        padding: $spacing-s;
+    }
+    &__table::-webkit-scrollbar {
+        width: 8px;
+    }
+    &__table::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.3);
+        -webkit-box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.3);
+        border-radius: 10px;
+    }
+    &__table::-webkit-scrollbar-thumb {
+        border-radius: 10px;
+        box-shadow: inset 0 0 50px rgba(45, 125, 200, 1);
+        -webkit-box-shadow: inset 0 0 50px rgba(45, 125, 200, 1);
+    }
+    &__table::-webkit-scrollbar-thumb:hover {
+        -webkit-box-shadow: inset 0 0 50px rgba(45, 125, 200, 1);
+        box-shadow: inset 0 0 50px rgba(45, 125, 200, 1);
+    }
+}

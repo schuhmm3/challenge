@@ -1,0 +1,56 @@
+version: '3.8'
+
+services:
+  backend:
+    container_name: backend
+    build:
+      context: backend
+      dockerfile: Dockerfile
+    restart: always
+    env_file:
+      - .env
+    environment:
+      MYSQL_DATABASE: '${DATABASE}'
+      MYSQL_USER: '${USER_DB}'
+      MYSQL_PASSWORD: '${PASSWORD_DB}'
+      PORT: ${PORT_BACK}
+      DB_HOSTNAME: 'mysql'
+    networks:
+      - app-network
+    ports:
+      - '${PORT_BACK}:${PORT_BACK}'
+    depends_on:
+      - db
+  frontend:
+    container_name: frontend
+    build:
+      context: frontend
+      dockerfile: Dockerfile
+    restart: always
+    env_file:
+      - .env
+    networks:
+      - app-network
+    ports:
+      - '${PORT_FRONT}:3000'
+    depends_on:
+      - db
+  db:
+    image: mysql:5.7
+    command: --default-authentication-plugin=mysql_native_password
+    container_name: mysql
+    restart: always
+    env_file:
+      - .env
+    ports:
+      - '3306:3306'
+    environment:
+      MYSQL_ROOT_PASSWORD: '${USER_DB}'
+      MYSQL_DATABASE: '${DATABASE}'
+      MYSQL_USER: '${USER_DB}'
+      MYSQL_PASSWORD: '${PASSWORD_DB}'
+    networks:
+      - app-network
+networks:
+  app-network:
+    driver: bridge
