@@ -38,8 +38,10 @@ export const Home = () => {
         }else{
             setLoading(true);
             await getChemicalData(query);
+            
             setQueryData("");
-            setLoading(false);   
+            setLoading(false);
+            console.log("DATA =>", chemicalData);
         }
     }
 
@@ -62,6 +64,7 @@ export const Home = () => {
                         {
                             loading 
                                 ?   <Spinner message={SPINNER_MESSAGE} size={200} /> 
+                                
                                 :   chemicalData.length > 0 && (
                                     <>
                                         <div className="homePage-content__card">
@@ -74,6 +77,7 @@ export const Home = () => {
                                                 }
                                                 </div>
                                                 <div className="homePage-content__card-text">
+                                                    {console.log(chemicalData)}
                                                     {TOTAL_DOCUMENTS}
                                                 </div>
                                                 <div className="homePage-content__card-number">

@@ -1,5 +1,5 @@
 const mysql = require('mysql');
-const {env: {DB_HOSTNAME, MYSQL_USER, MYSQL_PASSWORD, MYSQL_DATABASE}} = process
+const { env: { DB_HOSTNAME, MYSQL_USER, MYSQL_PASSWORD, MYSQL_DATABASE } } = process
 
 const Mysql = (() => {
     let connection = null
