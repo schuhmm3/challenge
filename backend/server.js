@@ -1,20 +1,18 @@
-const {env: {PORT}} = process
 const express = require('express');
-const bodyParser = require('body-parser');
-const Mysql = require('./db')
+const cors = require('cors');
 
+const bodyParser = require('body-parser');
 
 const app = express();
 
-app.use(bodyParser.urlencoded({extended: false}))
+app.use(cors());
+app.use(bodyParser.urlencoded({ extended:false }))
 app.use(bodyParser.json());
 
-// Routes
-app.use(require("./routes/routes"))
+const routes = require("./api/routes/routes");
+routes(app);
 
-// Database connection
-Mysql.connect()
-      .then(() => app.listen(PORT, () => console.log(`Server listening to port ${PORT}`)))
-        .catch(error => console.error(`[ERROR] :: Server is not active :: ${error.message}`))
-
-
+const port = 5000;
+app.listen(port, () => {
+    console.log(`Listening to port ${port}`)
+})
