@@ -4,7 +4,8 @@ export type SearchbarProps = {
     value:string | number;
     placeholder:string;
     onChange: Function;
-    onClickSearchbar: Function;
+    onClickSearchbar?: Function;
     iconName?:IconName;
     iconLibrary?: IconPrefix
+    hasKeyPress: boolean;
 }

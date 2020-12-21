@@ -1,0 +1,1 @@
+export const tableColumnTitles = ["patent title", "patent number"];

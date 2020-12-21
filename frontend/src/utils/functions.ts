@@ -1,13 +1,16 @@
 
 export const countTotalUniquePatents = (arr:any[]) => {
-   if(Array.isArray(arr) && arr.length > 0){
-      return arr.map(element => element ?.patent_number ).reduce((acc, curr, ind, array) => {
+  return arr.map(element => element?.docs).reduce((acc,current) => acc + current, 0)
+}
 
-         if(array.lastIndexOf(curr) === ind){
-           return ++acc;
-         }
-         return acc;
-     }, 0);
-   }
-    return [];
+export const sortTable = (a:any,b:any) => {
+  if(a.chemical_type < b.chemical_type){
+      return -1;
+  }
+
+  if(a.chemical_type > b.chemical_type){
+    return 1;
+}
+  return 0;
+
 }

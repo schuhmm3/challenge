@@ -5,11 +5,13 @@
     justify-content: center;
     margin: $spacing-xs;
     background-color: $background-light;
+    border-radius: 4px;
     &__title {
         padding: $spacing-s;
     }
     &__searchbar {
         padding: $spacing-s;
+        width: 50%;
     }
     &__table {
         overflow-y: auto;

@@ -1,0 +1,64 @@
+@import "styles/styles-utils.scss";
+
+.modal__container {
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+
+    color: $background-light;
+
+    .modal {
+        height: auto;
+        margin: 1.75rem auto;
+        opacity: 1;
+        &__header {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            background-color: $background-blue;
+            svg {
+                cursor: pointer;
+            }
+        }
+        &__title {
+            svg {
+                font-size: $font-size-xl;
+                margin-right: $spacing-xs;
+            }
+        }
+        &__body {
+            width: 100%;
+            background-color: $background-light;
+            color: $gray;
+        }
+        &__buttons {
+            display: flex;
+            justify-content: flex-end;
+            width: 100%;
+            background-color: $background-light-gray;
+
+            button {
+                margin-left: 16px;
+            }
+        }
+    }
+}
+
+.modal:empty {
+    display: none;
+}
+
+.modal > div {
+    padding: 16px;
+}

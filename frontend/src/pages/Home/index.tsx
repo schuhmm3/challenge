@@ -14,14 +14,14 @@ import { ChemicalDataContext } from "context/chemicalData/chemicalDataContext";
 /** Utils */
 import { countTotalUniquePatents } from "utils/functions";
 /** Constants */
-import { TOTAL_DOCUMENTS, SPINNER_MESSAGE, SEARCHBAR_PLACEHOLDER } from "constants/texts";
+import { TOTAL_DOCUMENTS, SPINNER_MESSAGE, SEARCHBAR_PLACEHOLDER, NO_RESULTS_FOUND, TEXT_TABLE_1, TEXT_TABLE_2, CHEMICAL_TYPE_1, CHEMICAL_TYPE_2 } from "constants/texts";
 /** Assets */
 import LogoBasf from "assets/png/basf-logo-transparent.png";
 /** Styles */
 import "./style/home.scss";
 export const Home = () => {
     const chemicalDataContext = useContext(ChemicalDataContext);
-    const { chemicalData, query, getChemicalData, setQueryData, clearChemicalData } = chemicalDataContext;
+    const { chemicalData, chemicalData2, chemicalDataFiltered, chemicalData2Filtered, query, getChemicalData, getChemicalData2, setQueryData, clearChemicalData } = chemicalDataContext;
     const [loading, setLoading] = useState<boolean>(false);
  
     const handleQuerySearch = (text: string) => {
@@ -38,11 +38,39 @@ export const Home = () => {
         }else{
             setLoading(true);
             await getChemicalData(query);
+            await getChemicalData2(query);
             
             setQueryData("");
             setLoading(false);
-            console.log("DATA =>", chemicalData);
         }
+    }
+
+    const renderResults = () => {
+        return (
+            <>
+                <div className="homePage-content__card">
+                    <DocumentCard>
+                        <div className="homePage-content__card-icon">
+                            {
+                                <FontAwesomeIcon
+                                    icon={faBook}
+                                ></FontAwesomeIcon>
+                            }
+                        </div>
+                        <div className="homePage-content__card-text">
+                            {TOTAL_DOCUMENTS}
+                        </div>
+                        <div className="homePage-content__card-number">
+                            {countTotalUniquePatents(chemicalData) + countTotalUniquePatents(chemicalData2)}
+                        </div>
+                    </DocumentCard>
+                </div>
+                <div className = "homePage-content__results">
+                        <ResultBox title={TEXT_TABLE_1} data={chemicalDataFiltered} type={CHEMICAL_TYPE_1}/>
+                        <ResultBox title={TEXT_TABLE_2} data={chemicalData2Filtered} type={CHEMICAL_TYPE_2}/>
+                </div>
+            </>
+        )
     }
 
     return (
@@ -59,39 +87,19 @@ export const Home = () => {
                             onChange={(query: string) => handleQuerySearch(query)}
                             onClickSearchbar={() => submitQuery()}
                             iconName={"search"}
+                            hasKeyPress={true}
                         />
                     </div>
                         {
                             loading 
-                                ?   <Spinner message={SPINNER_MESSAGE} size={200} /> 
-                                
-                                :   chemicalData.length > 0 && (
-                                    <>
-                                        <div className="homePage-content__card">
-                                            <DocumentCard>
-                                                <div className="homePage-content__card-icon">
-                                                {
-                                                    <FontAwesomeIcon
-                                                        icon={faBook}
-                                                    ></FontAwesomeIcon>
-                                                }
-                                                </div>
-                                                <div className="homePage-content__card-text">
-                                                    {console.log(chemicalData)}
-                                                    {TOTAL_DOCUMENTS}
-                                                </div>
-                                                <div className="homePage-content__card-number">
-                                                    {countTotalUniquePatents(chemicalData)}
-                                                </div>
-                                            </DocumentCard>
-                                        </div>
-                                        <div className = "homePage-content__results">
-                                            <ResultBox title={"TITLE 1"} data={chemicalData} />
-                                            <ResultBox title={"TITLE 2"} data={chemicalData} />
-                                        </div>
-                                    </>
-                            )
+                               ? <Spinner message={SPINNER_MESSAGE} size={200} />
+                               : (
+                                    !chemicalData 
+                                        ? "" 
+                                        : (chemicalData.length > 0 ? renderResults() : NO_RESULTS_FOUND) 
+                                )
                         }
+
                     </div>
             </div>
         </Layout>

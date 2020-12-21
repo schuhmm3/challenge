@@ -1,5 +1,7 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:300);
 /* Font families */
 $font-primary: "Open Sans";
+$font-secondary: "Roboto", sans-serif;
 
 /* Font weights */
 $font-weight-light: 300;
@@ -26,6 +28,7 @@ $spacing-xl: 24px;
 $background-blue: #004a96;
 $background-light: #eee;
 $background-light-gray: #ccc;
+$gray: #666;
 
 /* boders */
 $border-gray: #ddd;

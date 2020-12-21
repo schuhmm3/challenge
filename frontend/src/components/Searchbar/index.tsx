@@ -8,7 +8,14 @@ import { SearchbarProps} from "./types";
 import "./style/searchbar.scss";
 
 export const Searchbar = (
-    { value, placeholder, onChange, onClickSearchbar, iconName } : SearchbarProps) => {
+    { value, placeholder, onChange, onClickSearchbar, iconName, hasKeyPress } : SearchbarProps) => {
+    
+    const handleKeyPress = (e:any) => {
+        if (e.key === 'Enter') {
+            onClickSearchbar(); 
+        }
+    }
+
     return(
         <div className="searchbar">
             <input
@@ -18,6 +25,7 @@ export const Searchbar = (
                 placeholder={placeholder}
                 value={value}
                 onChange={e => onChange(e.target.value)}
+                onKeyUp={hasKeyPress ? handleKeyPress : () => ({})}
                 data-testid="search-input"
             />
 
