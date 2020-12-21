@@ -3,10 +3,29 @@
     width: 200px;
     background-color: $background-light;
     height: 100vh;
+    display: flex;
+    flex-direction: column;
     &__title {
         font-family: $font-primary;
         font-size: $font-size-xl;
         border-bottom: 1px solid $border-gray;
         padding: $spacing-s;
+        a {
+            color: $gray;
+            text-decoration: none;
+        }
+    }
+    &__list {
+        padding: $spacing-s;
+        display: flex;
+        flex-direction: column;
+        a {
+            padding: $spacing-s 0;
+            color: $gray;
+        }
+    }
+    &__logout {
+        padding: $spacing-s;
+        cursor: pointer;
     }
 }

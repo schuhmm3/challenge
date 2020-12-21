@@ -1,0 +1,1 @@
+export const BASE_URL_PATENT_REDIRECT = "https://patents.google.com/patent";

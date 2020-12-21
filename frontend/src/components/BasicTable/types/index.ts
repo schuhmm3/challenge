@@ -1,8 +1,8 @@
 export type BasicTableProps = {
-    id: string;
-    rows:any[];
-    columnNames: any;
-    loading: boolean;
-    setRows: () => void;
-    setRow: () => void;
+    data:any[];
+    tableColumnTitles: string[];
+    tableColumnHeaderTitles: string[];
+    onClickTableHeader?: () => void;
+    onClickTableRow: (patent:string) => void;
+    hasActions: boolean;
 }

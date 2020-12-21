@@ -1,0 +1,1 @@
+export const TRANSPARENT_COLOR = "transparent";

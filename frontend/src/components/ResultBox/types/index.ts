@@ -1,9 +1,10 @@
 export type resultBoxProps = {
     title: string;
-    data: ChemicalData[]
+    data: ChemicalData[];
+    type: string;
 }
 
-type ChemicalData = {
+export type ChemicalData = {
     id: number;
     patent_number: string;
     patent_title: string;

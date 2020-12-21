@@ -1,4 +1,3 @@
-import { StringMappingType } from "typescript";
 
 export type ChemicalDataState = {
     id: number;
