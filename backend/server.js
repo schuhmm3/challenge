@@ -1,4 +1,3 @@
-const {env: {PORT}} = process
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
@@ -19,3 +18,7 @@ Mysql.connect()
         .catch(error => console.error(`[ERROR] :: Server is not active :: ${error.message}`))
 
 
+const port = 5000;
+app.listen(port, () => {
+    console.log(`Listening to port ${port}`)
+})
