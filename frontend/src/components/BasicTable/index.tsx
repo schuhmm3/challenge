@@ -1,7 +1,7 @@
 import React,{ useState } from "react";
 /** Libraries */
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBook } from "@fortawesome/free-solid-svg-icons";
+import { faBook, faSortUp, faSortDown } from "@fortawesome/free-solid-svg-icons";
 /** Components */
 import { Modal } from "components/Modal";
 /** Types */
@@ -13,9 +13,7 @@ import { TRANSPARENT_COLOR } from "constants/colors";
 /** Styles */
 import "./style/basicTable.scss";
 
-
-
-export const BasicTable = ({ data, tableColumnTitles, tableColumnHeaderTitles, onClickTableHeader, onClickTableRow, hasActions } : BasicTableProps) => {
+export const BasicTable = ({ data, tableColumnTitles, tableColumnHeaderTitles, onClickTableHeader, onClickTableRow, order, hasActions } : BasicTableProps) => {
 
     const [isModalOpen, setModalIsOpen] = useState(false);
     const [patentNumber, setPatentNumber] = useState("");
@@ -31,8 +29,6 @@ export const BasicTable = ({ data, tableColumnTitles, tableColumnHeaderTitles, o
         setModalIsOpen(!isModalOpen);
         setPatentNumber(patent);
     };
-
-    
 
     const showModal = () => {
         return (
@@ -55,7 +51,12 @@ export const BasicTable = ({ data, tableColumnTitles, tableColumnHeaderTitles, o
 
     const renderHeader = () => {
         return tableColumnHeaderTitles.map((key, index) => {
-           return <th key={index}>{key}</th>;
+           return (
+                <th key={index}>
+                    <div>{key}</div>
+                    <div><FontAwesomeIcon icon={order ? faSortUp : faSortDown}></FontAwesomeIcon></div>
+                </th>
+           );
         });
     };
 
@@ -86,7 +87,7 @@ export const BasicTable = ({ data, tableColumnTitles, tableColumnHeaderTitles, o
     return (
         <>
             <table className="basicTable">
-                <thead onClick={onClickTableHeader}>
+                <thead onClick={() => onClickTableHeader(tableColumnTitles[0])}>
                     <tr>{renderHeader()}</tr>
                 </thead>
                 <tbody>{renderBody()}</tbody>

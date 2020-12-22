@@ -18,16 +18,38 @@ export const ResultBox = ({ title, data, type }: resultBoxProps) => {
     const [localQuery, setLocalQuery] = useState("");
     const [localChemicalData, setLocalChemicalData] = useState(null);
     const [localChemicalData2, setLocalChemicalData2] = useState(null);
+    const [order, setOrder] = useState(false);
     const history = useHistory();
 
     const chemicalDataContext = useContext(ChemicalDataContext);
-    const { filterChemicalData, filterChemicalData2, sortChemicalData, chemicalDataFiltered, chemicalData2Filtered, getAllDocsByChemicalType, getAllDocsByChemicalType2 } = chemicalDataContext;
+    const { filterChemicalData, filterChemicalData2, sortChemicalData, sortChemicalData2, chemicalDataFiltered, chemicalData2Filtered, getAllDocsByChemicalType, getAllDocsByChemicalType2 } = chemicalDataContext;
 
     useEffect(() => {
         setLocalChemicalData(chemicalDataFiltered)
         setLocalChemicalData2(chemicalData2Filtered)
         
     },[chemicalDataFiltered])
+
+    const handleSort = (key:string) => {
+        if(type === CHEMICAL_TYPE_1){
+            if(order){
+                sortChemicalData(key, "asc");
+                setOrder(!order);
+            }else{
+                sortChemicalData(key, "desc");
+                setOrder(!order)
+            }
+        }
+        if(type === CHEMICAL_TYPE_2){
+            if(order){
+                sortChemicalData2(key, "asc");
+                setOrder(!order);
+            }else{
+                sortChemicalData2(key, "desc");
+                setOrder(!order)
+            }
+        }
+    }
 
     const handleQuerySearch = (text: string) => {
         if(!text){
@@ -82,8 +104,9 @@ export const ResultBox = ({ title, data, type }: resultBoxProps) => {
                     data={data} 
                     tableColumnTitles={tableColumnTitlesKeys}
                     tableColumnHeaderTitles={tableColumnHeaderTitle}
-                    onClickTableHeader={() => sortChemicalData()}
+                    onClickTableHeader={(key:string) => handleSort(key)}
                     onClickTableRow={(patent:string) => getLocalChemicalElement(patent)}
+                    order={order}
                     hasActions={false}
                 />
             </div>
