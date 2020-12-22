@@ -87,7 +87,7 @@ export const ChemicalDataState = ({ children }: any) => {
     };
 
     // SORT CHEMICAL DATA
-    const sortChemicalData = async (key:string, order:string) => {
+    const sortChemicalData = async (key: string, order: string) => {
         dispatch({
             type: SORT_CHEMICAL_DATA,
             payload: [key, order],
@@ -95,7 +95,7 @@ export const ChemicalDataState = ({ children }: any) => {
     };
 
     // SORT CHEMICAL DATA
-    const sortChemicalData2 = async (key:string, order:string) => {
+    const sortChemicalData2 = async (key: string, order: string) => {
         dispatch({
             type: SORT_CHEMICAL_DATA_2,
             payload: [key, order],
@@ -103,7 +103,7 @@ export const ChemicalDataState = ({ children }: any) => {
     };
 
     // GET ALL DOCS BY CHEMICAL TYPE TABLE 1
-    const getAllDocsByChemicalType = async (chemicalType:string) => {
+    const getAllDocsByChemicalType = async (chemicalType: string) => {
         const res = await getDocsByChemicalType(chemicalType);
         dispatch({
             type: GET_CHEMICAL_ELEMENT,
@@ -112,7 +112,7 @@ export const ChemicalDataState = ({ children }: any) => {
     };
 
     // GET ALL DOCS BY CHEMICAL TYPE TABLE 2
-    const getAllDocsByChemicalType2 = async (chemicalType:string) => {
+    const getAllDocsByChemicalType2 = async (chemicalType: string) => {
         const res = await getDocsByChemicalType2(chemicalType);
         dispatch({
             type: GET_CHEMICAL_ELEMENT,
