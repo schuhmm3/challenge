@@ -7,10 +7,11 @@ import {
     FILTER_CHEMICAL_DATA,
     FILTER_CHEMICAL_DATA_2,
     SORT_CHEMICAL_DATA,
+    SORT_CHEMICAL_DATA_2,
     GET_CHEMICAL_ELEMENT,
 } from "../types";
 
-import { sortTable } from "utils/functions";
+import { dynamicSort } from "utils/functions";
 
 export default (state, action) => {
     switch (action.type) {
@@ -66,8 +67,16 @@ export default (state, action) => {
         case SORT_CHEMICAL_DATA:
             return {
                 ...state,
-                chemicalDataFiltered: state.chemicalData.sort(sortTable),
-                chemicalData2Filtered: state.chemicalData2.sort(sortTable),
+                chemicalDataFiltered: state.chemicalData.sort(
+                    dynamicSort(action.payload[0], action.payload[1])
+                ),
+            };
+        case SORT_CHEMICAL_DATA_2:
+            return {
+                ...state,
+                chemicalData2Filtered: state.chemicalData2.sort(
+                    dynamicSort(action.payload[0], action.payload[1])
+                ),
             };
         case GET_CHEMICAL_ELEMENT:
             return {

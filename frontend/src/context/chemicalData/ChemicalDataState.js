@@ -15,6 +15,7 @@ import {
     SET_QUERY,
     FILTER_CHEMICAL_DATA,
     SORT_CHEMICAL_DATA,
+    SORT_CHEMICAL_DATA_2,
     GET_CHEMICAL_ELEMENT,
     FILTER_CHEMICAL_DATA_2,
 } from "../types";
@@ -100,9 +101,18 @@ export const ChemicalDataState = ({ children }: any) => {
     };
 
     // SORT CHEMICAL DATA
-    const sortChemicalData = async () => {
+    const sortChemicalData = async (key, order) => {
         dispatch({
             type: SORT_CHEMICAL_DATA,
+            payload: [key, order],
+        });
+    };
+
+    // SORT CHEMICAL DATA
+    const sortChemicalData2 = async (key, order) => {
+        dispatch({
+            type: SORT_CHEMICAL_DATA_2,
+            payload: [key, order],
         });
     };
 
@@ -142,6 +152,7 @@ export const ChemicalDataState = ({ children }: any) => {
                 filterChemicalData,
                 filterChemicalData2,
                 sortChemicalData,
+                sortChemicalData2,
                 getAllDocsByChemicalType,
                 getAllDocsByChemicalType2,
             }}
