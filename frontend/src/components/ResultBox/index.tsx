@@ -1,4 +1,5 @@
-import React,{ useState, useEffect, useContext } from "react";
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+import React,{ useState, useContext } from "react";
 /** Libraries */
 import { useHistory } from "react-router-dom";
 /** Components */
@@ -16,19 +17,11 @@ import "./style/resultBox.scss";
 
 export const ResultBox = ({ title, data, type }: resultBoxProps) => {
     const [localQuery, setLocalQuery] = useState("");
-    const [localChemicalData, setLocalChemicalData] = useState(null);
-    const [localChemicalData2, setLocalChemicalData2] = useState(null);
     const [order, setOrder] = useState(false);
     const history = useHistory();
 
     const chemicalDataContext = useContext(ChemicalDataContext);
     const { filterChemicalData, filterChemicalData2, sortChemicalData, sortChemicalData2, chemicalDataFiltered, chemicalData2Filtered, getAllDocsByChemicalType, getAllDocsByChemicalType2 } = chemicalDataContext;
-
-    useEffect(() => {
-        setLocalChemicalData(chemicalDataFiltered)
-        setLocalChemicalData2(chemicalData2Filtered)
-        
-    },[chemicalDataFiltered])
 
     const handleSort = (key:string) => {
         if(type === CHEMICAL_TYPE_1){
@@ -65,9 +58,8 @@ export const ResultBox = ({ title, data, type }: resultBoxProps) => {
     }
 
     const getLocalChemicalElement = (chemicalType:string) => {
-        // Refactor if time
-        if(localChemicalData && type === CHEMICAL_TYPE_1){
-            const local = localChemicalData.find((elm:any) => elm.chemical_type === chemicalType);
+        if(type === CHEMICAL_TYPE_1){
+            const local =  chemicalDataFiltered.find((elm:any) => elm.chemical_type === chemicalType);
             getAllDocsByChemicalType(local.chemical_type)
             history.push({
                 pathname: `/document/${local.chemical_type}`,
@@ -75,18 +67,17 @@ export const ResultBox = ({ title, data, type }: resultBoxProps) => {
             });
         }
 
-        if(localChemicalData2 && type === CHEMICAL_TYPE_2){
-            const local = localChemicalData2.find((elm:any) => elm.chemical_type === chemicalType);
+        if(type === CHEMICAL_TYPE_2){
+            const local = chemicalData2Filtered.find((elm:any) => elm.chemical_type === chemicalType);
             getAllDocsByChemicalType2(local.chemical_type)
             history.push({
                 pathname: `/document/${local.chemical_type}`,
                 state: local.chemical_type
-            });
-            
+            });    
         }
     }
     
-    return(
+    return (
         <div className="resultBox">
             <div className="resultBox__title">
                 {title}

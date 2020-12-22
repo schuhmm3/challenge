@@ -13,7 +13,7 @@ import {
 
 import { dynamicSort } from "utils/functions";
 
-export default (state, action) => {
+export default (state:any, action:any) => {
     switch (action.type) {
         case GET_CHEMICAL_DATA:
             return {
@@ -31,15 +31,15 @@ export default (state, action) => {
             return {
                 ...state,
                 query: "",
-                chemicalData: null,
-                chemicalDataFiltered: null,
+                chemicalData: [],
+                chemicalDataFiltered: [],
             };
         case CLEAR_CHEMICAL_DATA_2:
             return {
                 ...state,
                 query: "",
-                chemicalData2: null,
-                chemicalData2Filtered: null,
+                chemicalData2: [],
+                chemicalData2Filtered: [],
             };
         case SET_QUERY:
             return {
@@ -49,7 +49,7 @@ export default (state, action) => {
         case FILTER_CHEMICAL_DATA:
             return {
                 ...state,
-                chemicalDataFiltered: state.chemicalData.filter(dataItem =>
+                chemicalDataFiltered: state.chemicalData.filter((dataItem:any) =>
                     dataItem.chemical_type
                         .toLowerCase()
                         .includes(action.payload.toLowerCase())
@@ -58,7 +58,7 @@ export default (state, action) => {
         case FILTER_CHEMICAL_DATA_2:
             return {
                 ...state,
-                chemicalData2Filtered: state.chemicalData2.filter(dataItem =>
+                chemicalData2Filtered: state.chemicalData2.filter((dataItem:any) =>
                     dataItem.chemical_type
                         .toLowerCase()
                         .includes(action.payload.toLowerCase())

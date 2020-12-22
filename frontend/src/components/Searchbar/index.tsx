@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import React from "react";
 /**Libraries */
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
@@ -12,6 +13,7 @@ export const Searchbar = (
     
     const handleKeyPress = (e:any) => {
         if (e.key === 'Enter') {
+            //@ts-ignore
             onClickSearchbar(); 
         }
     }
@@ -28,7 +30,7 @@ export const Searchbar = (
                 onKeyUp={hasKeyPress ? handleKeyPress : () => ({})}
                 data-testid="search-input"
             />
-
+            {/*@ts-ignore*/ }
             <div className="searchbar__icon" onClick={() => onClickSearchbar()}>
                 {iconName && (
                     <FontAwesomeIcon

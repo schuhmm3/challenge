@@ -1,6 +1,6 @@
 export type resultBoxProps = {
     title: string;
-    data: ChemicalData[];
+    data: ChemicalData[] | [];
     type: string;
 }
 

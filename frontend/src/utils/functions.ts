@@ -1,6 +1,7 @@
 
-export const countTotalUniquePatents = (arr:any[]) => {
-  return arr.map(element => element?.docs).reduce((acc,current) => acc + current, 0)
+export const countTotalUniquePatents = (arr:any[] | null) => {
+
+  return arr !== null && arr.map(element => element?.docs).reduce((acc,current) => acc + current, 0)
 }
 
 export const sortTable = (a:any,b:any) => {
