@@ -96,6 +96,8 @@ export const Home = () => {
                                : (
                                     !chemicalData 
                                         ? "" 
+                                        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                                        //@ts-ignore
                                         : (chemicalData.length > 0 ? renderResults() : NO_RESULTS_FOUND) 
                                 )
                         }

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import React, { useContext } from "react";
 /** Libraries */
 import { useHistory } from "react-router-dom";
@@ -26,6 +27,7 @@ export const Document = () => {
                     <h2>{DOCUMENTS_PAGE_TITLE}</h2>
                 </div>
                 <div className="documents__searched">
+                    {/* @ts-ignore */}
                     <span>{history.location.state}</span>
                 </div>
                 <div className="documents__content">

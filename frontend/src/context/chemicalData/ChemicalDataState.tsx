@@ -35,39 +35,25 @@ export const ChemicalDataState = ({ children }: any) => {
     const [state, dispatch] = useReducer(chemicalDataReducer, initialState);
 
     // GET CHEMICAL DATA TABLE 1
-    const getChemicalData = async query => {
-        try {
-            const res = await getChemicalTypes(query);
-            dispatch({
-                type: GET_CHEMICAL_DATA,
-                payload: res,
-            });
-        } catch (err) {
-            dispatch({
-                type: CLEAR_CHEMICAL_DATA,
-                payload: "err",
-            });
-        }
+    const getChemicalData = async (query: string) => {
+        const res = await getChemicalTypes(query);
+        dispatch({
+            type: GET_CHEMICAL_DATA,
+            payload: res,
+        });
     };
 
     // GET CHEMICAL DATA TABLE 2
-    const getChemicalData2 = async query => {
-        try {
-            const res = await getChemicalTypes2(query);
-            dispatch({
-                type: GET_CHEMICAL_DATA_2,
-                payload: res,
-            });
-        } catch (err) {
-            dispatch({
-                type: CLEAR_CHEMICAL_DATA_2,
-                payload: "err",
-            });
-        }
+    const getChemicalData2 = async (query: string) => {
+        const res = await getChemicalTypes2(query);
+        dispatch({
+            type: GET_CHEMICAL_DATA_2,
+            payload: res,
+        });
     };
 
     // SET QUERY SEARCH
-    const setQueryData = async query => {
+    const setQueryData = async (query: string) => {
         dispatch({
             type: SET_QUERY,
             payload: query,
@@ -85,7 +71,7 @@ export const ChemicalDataState = ({ children }: any) => {
     };
 
     // FILTER CHEMICAL DATA TABLE 1
-    const filterChemicalData = async query => {
+    const filterChemicalData = async (query: string) => {
         dispatch({
             type: FILTER_CHEMICAL_DATA,
             payload: query,
@@ -93,7 +79,7 @@ export const ChemicalDataState = ({ children }: any) => {
     };
 
     // FILTER CHEMICAL DATA TABLE 2
-    const filterChemicalData2 = async query => {
+    const filterChemicalData2 = async (query: string) => {
         dispatch({
             type: FILTER_CHEMICAL_DATA_2,
             payload: query,
@@ -101,7 +87,7 @@ export const ChemicalDataState = ({ children }: any) => {
     };
 
     // SORT CHEMICAL DATA
-    const sortChemicalData = async (key, order) => {
+    const sortChemicalData = async (key:string, order:string) => {
         dispatch({
             type: SORT_CHEMICAL_DATA,
             payload: [key, order],
@@ -109,7 +95,7 @@ export const ChemicalDataState = ({ children }: any) => {
     };
 
     // SORT CHEMICAL DATA
-    const sortChemicalData2 = async (key, order) => {
+    const sortChemicalData2 = async (key:string, order:string) => {
         dispatch({
             type: SORT_CHEMICAL_DATA_2,
             payload: [key, order],
@@ -117,7 +103,7 @@ export const ChemicalDataState = ({ children }: any) => {
     };
 
     // GET ALL DOCS BY CHEMICAL TYPE TABLE 1
-    const getAllDocsByChemicalType = async chemicalType => {
+    const getAllDocsByChemicalType = async (chemicalType:string) => {
         const res = await getDocsByChemicalType(chemicalType);
         dispatch({
             type: GET_CHEMICAL_ELEMENT,
@@ -126,7 +112,7 @@ export const ChemicalDataState = ({ children }: any) => {
     };
 
     // GET ALL DOCS BY CHEMICAL TYPE TABLE 2
-    const getAllDocsByChemicalType2 = async chemicalType => {
+    const getAllDocsByChemicalType2 = async (chemicalType:string) => {
         const res = await getDocsByChemicalType2(chemicalType);
         dispatch({
             type: GET_CHEMICAL_ELEMENT,
@@ -143,6 +129,7 @@ export const ChemicalDataState = ({ children }: any) => {
                 chemicalData2Filtered: state.chemicalData2Filtered,
                 chemicalDataElement: state.chemicalDataElement,
                 chemicalTypeDocs: state.chemicalTypeDocs,
+                chemicalTypeDocs2: state.chemicalTypeDocs2,
                 query: state.query,
                 getChemicalData,
                 getChemicalData2,

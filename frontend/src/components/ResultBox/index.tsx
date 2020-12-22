@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import React,{ useState, useEffect, useContext } from "react";
 /** Libraries */
 import { useHistory } from "react-router-dom";
@@ -66,8 +67,9 @@ export const ResultBox = ({ title, data, type }: resultBoxProps) => {
 
     const getLocalChemicalElement = (chemicalType:string) => {
         // Refactor if time
-        if(localChemicalData && type === CHEMICAL_TYPE_1){
-            const local = localChemicalData.find((elm:any) => elm.chemical_type === chemicalType);
+        if(type === CHEMICAL_TYPE_1){
+            //@ts-ignore
+            const local =  localChemicalData.find((elm:any) => elm.chemical_type === chemicalType);
             getAllDocsByChemicalType(local.chemical_type)
             history.push({
                 pathname: `/document/${local.chemical_type}`,
@@ -75,7 +77,8 @@ export const ResultBox = ({ title, data, type }: resultBoxProps) => {
             });
         }
 
-        if(localChemicalData2 && type === CHEMICAL_TYPE_2){
+        if(type === CHEMICAL_TYPE_2){
+            //@ts-ignore
             const local = localChemicalData2.find((elm:any) => elm.chemical_type === chemicalType);
             getAllDocsByChemicalType2(local.chemical_type)
             history.push({

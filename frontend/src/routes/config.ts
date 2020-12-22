@@ -1,13 +1,27 @@
-/** Pages */
 import { Home } from "pages/Home";
-/** Types */
+import { About } from "pages/About";
+import { Document } from "pages/Document";
 import { Routes } from "./types";
+import { ROUTES } from "constants/routes";
 
 const routes: Routes[] = [
     {
-        path: "/",
+        path: ROUTES.HOME,
         component: Home,
         exact: true,
+        routes: [],
+    },
+    {
+        path: ROUTES.ABOUT,
+        component: About,
+        exact: true,
+        routes: [],
+    },
+    {
+        path: ROUTES.DOCUMENT,
+        component: Document,
+        exact: true,
+        routes: [],
     },
 ];
 
