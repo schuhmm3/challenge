@@ -23,6 +23,7 @@ export const Home = () => {
     const chemicalDataContext = useContext(ChemicalDataContext);
     const { chemicalData, chemicalData2, chemicalDataFiltered, chemicalData2Filtered, query, getChemicalData, getChemicalData2, setQueryData, clearChemicalData } = chemicalDataContext;
     const [loading, setLoading] = useState<boolean>(false);
+    const [isSubmited, setIsSubmited] = useState<boolean>(false);
  
     const handleQuerySearch = (text: string) => {
         if(!text){
@@ -32,7 +33,6 @@ export const Home = () => {
     }
 
     const submitQuery = async() => {
-        
         if(query === ""){
             clearChemicalData()
         }else{
@@ -42,6 +42,7 @@ export const Home = () => {
             
             setQueryData("");
             setLoading(false);
+            setIsSubmited(true);
         }
     }
 
@@ -93,13 +94,7 @@ export const Home = () => {
                         {
                             loading 
                                ? <Spinner message={SPINNER_MESSAGE} size={200} />
-                               : (
-                                    !chemicalData 
-                                        ? "" 
-                                        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-                                        //@ts-ignore
-                                        : (chemicalData.length > 0 ? renderResults() : NO_RESULTS_FOUND) 
-                                )
+                               : ( chemicalData.length > 0 ? renderResults() : isSubmited && NO_RESULTS_FOUND )
                         }
 
                     </div>

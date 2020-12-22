@@ -31,15 +31,15 @@ export default (state:any, action:any) => {
             return {
                 ...state,
                 query: "",
-                chemicalData: null,
-                chemicalDataFiltered: null,
+                chemicalData: [],
+                chemicalDataFiltered: [],
             };
         case CLEAR_CHEMICAL_DATA_2:
             return {
                 ...state,
                 query: "",
-                chemicalData2: null,
-                chemicalData2Filtered: null,
+                chemicalData2: [],
+                chemicalData2Filtered: [],
             };
         case SET_QUERY:
             return {

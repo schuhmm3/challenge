@@ -2,13 +2,13 @@ import React from "react";
 
 interface IContextTypes {
   query: string;
-  chemicalData: null;
-  chemicalDataFiltered: null;
-  chemicalData2: null;
-  chemicalData2Filtered: null;
+  chemicalData: any[];
+  chemicalDataFiltered: any[];
+  chemicalData2: any[];
+  chemicalData2Filtered: any[];
   chemicalDataElement: null;
-  chemicalTypeDocs: null;
-  chemicalTypeDocs2: null;
+  chemicalTypeDocs: any[];
+  chemicalTypeDocs2: any[];
   getChemicalData: (query: string) => void;
   getChemicalData2: (query: string) => void;
   setQueryData: (query:string) => void;
@@ -24,13 +24,13 @@ interface IContextTypes {
 
 const initialContextValues  = {
   query: "",
-  chemicalData: null,
-  chemicalDataFiltered: null,
-  chemicalData2: null,
-  chemicalData2Filtered: null,
+  chemicalData: [],
+  chemicalDataFiltered: [],
+  chemicalData2: [],
+  chemicalData2Filtered: [],
   chemicalDataElement: null,
-  chemicalTypeDocs: null,
-  chemicalTypeDocs2: null,
+  chemicalTypeDocs: [],
+  chemicalTypeDocs2: [],
   getChemicalData: () => ({}),
   getChemicalData2: () => ({}),
   setQueryData: () => ({}),

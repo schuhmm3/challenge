@@ -23,13 +23,13 @@ import {
 export const ChemicalDataState = ({ children }: any) => {
     const initialState = {
         query: "",
-        chemicalData: null,
-        chemicalDataFiltered: null,
-        chemicalData2: null,
-        chemicalData2Filtered: null,
+        chemicalData: [],
+        chemicalDataFiltered: [],
+        chemicalData2: [],
+        chemicalData2Filtered: [],
         chemicalDataElement: null,
-        chemicalTypeDocs: null,
-        chemicalTypeDocs2: null,
+        chemicalTypeDocs: [],
+        chemicalTypeDocs2: [],
     };
 
     const [state, dispatch] = useReducer(chemicalDataReducer, initialState);
