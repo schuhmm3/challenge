@@ -62,7 +62,6 @@ export const BasicTable = ({ data, tableColumnTitles, tableColumnHeaderTitles, o
 
     const renderBody = () => {
         return (
-            data &&
             data.map(( row:any,index:number ) => {
                 return (
                     <tr key={index} onClick={() => onClickTableRow(row.chemical_type)}>

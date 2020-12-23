@@ -1,7 +1,9 @@
 
-export const countTotalUniquePatents = (arr:any[] | null) => {
-
-  return arr !== null && arr.map(element => element?.docs).reduce((acc,current) => acc + current, 0)
+export const countTotalUniquePatents = (arr:any[]) => {
+  if(Array.isArray(arr) && arr.length > 0){
+    arr.map(element => element?.docs).reduce((acc,current) => acc + current, 0)
+  }
+  return 0;
 }
 
 export const sortTable = (a:any,b:any) => {
@@ -11,13 +13,12 @@ export const sortTable = (a:any,b:any) => {
 
   if(a.chemical_type > b.chemical_type){
     return 1;
-}
+  }
   return 0;
 
 }
 
 export const dynamicSort = (key:string, order = 'asc')  => {
-  console.log(key);
   return function innerSort(a:any, b:any) {
     // eslint-disable-next-line no-prototype-builtins
     if (!a.hasOwnProperty(key) || !b.hasOwnProperty(key)) {
