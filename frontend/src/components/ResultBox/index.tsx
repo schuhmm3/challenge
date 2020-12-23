@@ -95,7 +95,7 @@ export const ResultBox = ({ title, data, type }: resultBoxProps) => {
                     data={data} 
                     tableColumnTitles={tableColumnTitlesKeys}
                     tableColumnHeaderTitles={tableColumnHeaderTitle}
-                    onClickTableHeader={(key:string) => handleSort(key)}
+                    onClickTableHeader={() => handleSort(tableColumnTitlesKeys[0])}
                     onClickTableRow={(patent:string) => getLocalChemicalElement(patent)}
                     order={order}
                     hasActions={false}

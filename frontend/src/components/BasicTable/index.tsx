@@ -87,7 +87,7 @@ export const BasicTable = ({ data, tableColumnTitles, tableColumnHeaderTitles, o
     return (
         <>
             <table className="basicTable">
-                <thead onClick={() => onClickTableHeader(tableColumnTitles[0])}>
+                <thead onClick={() => onClickTableHeader()}>
                     <tr>{renderHeader()}</tr>
                 </thead>
                 <tbody>{renderBody()}</tbody>
