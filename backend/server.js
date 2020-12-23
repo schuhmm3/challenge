@@ -1,3 +1,4 @@
+const {env: {PORT}} = process
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
@@ -16,9 +17,3 @@ app.use(require("./routes/routes"))
 Mysql.connect()
       .then(() => app.listen(PORT, () => console.log(`Server listening to port ${PORT}`)))
         .catch(error => console.error(`[ERROR] :: Server is not active :: ${error.message}`))
-
-
-const port = 5000;
-app.listen(port, () => {
-    console.log(`Listening to port ${port}`)
-})
