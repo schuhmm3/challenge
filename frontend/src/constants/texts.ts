@@ -14,3 +14,4 @@ export const MODAL_HEADER_MESSAGE = " Do you want to leave this page ? ";
 export const MODAL_BUTTON_CONFIRM = "Confirm";
 export const MODAL_BUTTON_CANCEL = "Cancel";
 export const GO_BACK_TEXT_BUTTON = "Go Back";
+export const ERROR_CONNECTION_MESSAGE = "Connection error";

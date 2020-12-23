@@ -14,7 +14,7 @@ import { ChemicalDataContext } from "context/chemicalData/chemicalDataContext";
 /** Utils */
 import { countTotalUniquePatents } from "utils/functions";
 /** Constants */
-import { TOTAL_DOCUMENTS, SPINNER_MESSAGE, SEARCHBAR_PLACEHOLDER, NO_RESULTS_FOUND, TEXT_TABLE_1, TEXT_TABLE_2, CHEMICAL_TYPE_1, CHEMICAL_TYPE_2 } from "constants/texts";
+import { TOTAL_DOCUMENTS, SPINNER_MESSAGE, SEARCHBAR_PLACEHOLDER, NO_RESULTS_FOUND, TEXT_TABLE_1, TEXT_TABLE_2, CHEMICAL_TYPE_1, CHEMICAL_TYPE_2, ERROR_CONNECTION_MESSAGE } from "constants/texts";
 /** Assets */
 import LogoBasf from "assets/png/basf-logo-transparent.png";
 /** Styles */
@@ -67,8 +67,14 @@ export const Home = () => {
                     </DocumentCard>
                 </div>
                 <div className = "homePage-content__results">
-                        <ResultBox title={TEXT_TABLE_1} data={chemicalDataFiltered} type={CHEMICAL_TYPE_1}/>
-                        <ResultBox title={TEXT_TABLE_2} data={chemicalData2Filtered} type={CHEMICAL_TYPE_2}/>
+                        {
+                            chemicalDataFiltered && Array.isArray(chemicalDataFiltered) && chemicalDataFiltered.length > 0 ? (
+                                <>
+                                    <ResultBox title={TEXT_TABLE_1} data={chemicalDataFiltered} type={CHEMICAL_TYPE_1}/>
+                                    <ResultBox title={TEXT_TABLE_2} data={chemicalData2Filtered} type={CHEMICAL_TYPE_2}/>
+                                </>
+                            ) : ERROR_CONNECTION_MESSAGE
+                        }
                 </div>
             </>
         )
