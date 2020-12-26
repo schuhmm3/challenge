@@ -6,4 +6,5 @@ export type BasicTableProps = {
     onClickTableRow: (patent:string) => void;
     order?:boolean;
     hasActions: boolean;
+    objectProperties:string[];
 }

@@ -14,10 +14,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border-radius: 5px;
-
+    border-radius: 4px;
     color: $background-light;
-
     .modal {
         height: auto;
         margin: 1.75rem auto;
@@ -49,7 +47,7 @@
             background-color: $background-light-gray;
 
             button {
-                margin-left: 16px;
+                margin-left: $spacing-m;
             }
         }
     }

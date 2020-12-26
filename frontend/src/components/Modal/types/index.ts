@@ -4,8 +4,6 @@ export type ModalProps = {
     modalTitle: string;
     confirmationButtonText?: string;
     cancelButtonText?: string;
-    confirmationButtonColor?: string;
-    cancelButtonColor?: string;
     children: React.ReactNode;
     handleConfirmAction?: Function;
     handleCancelAction?: Function;
