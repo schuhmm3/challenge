@@ -6,6 +6,7 @@
     margin: $spacing-xs;
     background-color: $background-light;
     border-radius: 4px;
+    width:100%;
     &__title {
         padding: $spacing-s;
     }
@@ -15,7 +16,7 @@
     }
     &__table {
         overflow-y: auto;
-        max-height: 300px;
+        height: 300px;
         padding: $spacing-s;
     }
     &__table::-webkit-scrollbar {

@@ -9,7 +9,7 @@ import {
     SORT_CHEMICAL_DATA,
     SORT_CHEMICAL_DATA_2,
     GET_CHEMICAL_ELEMENT,
-} from "../types";
+} from "./types";
 
 import { dynamicSort } from "utils/functions";
 

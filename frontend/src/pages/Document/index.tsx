@@ -38,6 +38,7 @@ export const Document = () => {
                         onClickTableHeader={() => ({})}
                         onClickTableRow={() => ({})}
                         hasActions={true}
+                        objectProperties={tableColumnTitlesDocsKeys}
                     />
                 </div>
                 <div className= "documents__button">

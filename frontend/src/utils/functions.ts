@@ -1,7 +1,7 @@
 
 export const countTotalUniquePatents = (arr:any[]) => {
   if(Array.isArray(arr) && arr.length > 0){
-    arr.map(element => element?.docs).reduce((acc,current) => acc + current, 0)
+    return arr.map(element => element.docs).reduce((acc,current) => acc + current, 0)
   }
   return 0;
 }

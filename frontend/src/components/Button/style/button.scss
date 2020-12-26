@@ -1,7 +1,8 @@
 @import "styles/styles-utils.scss";
+
 .button {
     vertical-align: middle;
-    font-size: 14px;
+    font-size: $font-size-s;
     text-align: center;
     border-radius: 4px;
     border: 1px solid $background-light;
@@ -15,6 +16,6 @@
     }
 
     svg {
-        margin-right: 8px;
+        margin-right: $spacing-xs;
     }
 }

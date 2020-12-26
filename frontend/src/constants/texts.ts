@@ -7,6 +7,7 @@ export const CHEMICAL_TYPE_2 = "chemical_type_2";
 export const TOTAL_DOCUMENTS = "TOTAL DOCUMENTS:";
 export const SPINNER_MESSAGE = "Waiting...";
 export const SEARCHBAR_PLACEHOLDER = "Search for the Chemical name...";
+export const SEARCHBAR_ICONNAME = "search";
 export const NO_RESULTS_FOUND = "No results found";
 export const DOCUMENTS_PAGE_TITLE = "DOCUMENTS";
 export const MODAL_BODY_MESSAGE = " You will be redirected to google's patent doc page ";

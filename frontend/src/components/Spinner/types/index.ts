@@ -1,4 +1,4 @@
 export type SpinnerProps = {
     message: string;
-    size: string | number;
+    size: string;
 }

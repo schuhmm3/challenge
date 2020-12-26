@@ -8,7 +8,7 @@ import { BasicTable } from "components/BasicTable";
 /** Context  */
 import { ChemicalDataContext } from "context/chemicalData/chemicalDataContext";
 /** Types */
-import { resultBoxProps } from "./types";  
+import { resultBoxProps, ChemicalData } from "./types";  
 /** Constants */
 import { tableColumnTitlesKeys, tableColumnHeaderTitle } from "constants/tableColumnTitles";
 import { SEARCHBAR_PLACEHOLDER, CHEMICAL_TYPE_1, CHEMICAL_TYPE_2 } from "constants/texts";
@@ -21,7 +21,7 @@ export const ResultBox = ({ title, data, type }: resultBoxProps) => {
     const history = useHistory();
 
     const chemicalDataContext = useContext(ChemicalDataContext);
-    const { filterChemicalData, filterChemicalData2, sortChemicalData, sortChemicalData2, chemicalDataFiltered, chemicalData2Filtered, getAllDocsByChemicalType, getAllDocsByChemicalType2 } = chemicalDataContext;
+    const { filterChemicalData, filterChemicalData2, sortChemicalData, sortChemicalData2, getAllDocsByChemicalType } = chemicalDataContext;
 
     const handleSort = (key:string) => {
         if(type === CHEMICAL_TYPE_1){
@@ -58,22 +58,14 @@ export const ResultBox = ({ title, data, type }: resultBoxProps) => {
     }
 
     const getLocalChemicalElement = (chemicalType:string) => {
-        if(type === CHEMICAL_TYPE_1){
-            const local =  chemicalDataFiltered.find((elm:any) => elm.chemical_type === chemicalType);
+        const local = data.find((elm: ChemicalData) => elm.chemical_type === chemicalType);
+            
+        if(local && local.chemical_type){
             getAllDocsByChemicalType(local.chemical_type)
             history.push({
-                pathname: `/document/${local.chemical_type}`,
+                pathname: `/document/${local.chemical_type.replace("/","")}`,
                 state: local.chemical_type
             });
-        }
-
-        if(type === CHEMICAL_TYPE_2){
-            const local = chemicalData2Filtered.find((elm:any) => elm.chemical_type === chemicalType);
-            getAllDocsByChemicalType2(local.chemical_type)
-            history.push({
-                pathname: `/document/${local.chemical_type}`,
-                state: local.chemical_type
-            });    
         }
     }
     
@@ -96,9 +88,10 @@ export const ResultBox = ({ title, data, type }: resultBoxProps) => {
                     tableColumnTitles={tableColumnTitlesKeys}
                     tableColumnHeaderTitles={tableColumnHeaderTitle}
                     onClickTableHeader={() => handleSort(tableColumnTitlesKeys[0])}
-                    onClickTableRow={(patent:string) => getLocalChemicalElement(patent)}
+                    onClickTableRow={(chemicalType:string) => getLocalChemicalElement(chemicalType)}
                     order={order}
                     hasActions={false}
+                    objectProperties={tableColumnTitlesKeys}
                 />
             </div>
         </div>
