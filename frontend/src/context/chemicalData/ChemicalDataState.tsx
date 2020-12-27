@@ -1,6 +1,6 @@
 import React, { useReducer } from "react";
 import { ChemicalDataContext } from "./chemicalDataContext";
-import chemicalDataReducer from "./chemicalDataReducer";
+import { chemicalDataReducer } from "./chemicalDataReducer";
 import {
     getChemicalTypes,
     getChemicalTypes2,

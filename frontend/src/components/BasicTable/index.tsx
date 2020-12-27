@@ -50,7 +50,7 @@ export const BasicTable = ({ data, tableColumnTitles, tableColumnHeaderTitles, o
         return tableColumnHeaderTitles.map((key, index) => {
            return (
                 <th key={index}>
-                    <div>{key}</div>
+                    <div>{`${key} Wtf`}</div>
                     <div><FontAwesomeIcon icon={order ? faSortUp : faSortDown}></FontAwesomeIcon></div>
                 </th>
            );

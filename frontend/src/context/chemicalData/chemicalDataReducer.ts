@@ -13,7 +13,7 @@ import {
 
 import { dynamicSort } from "utils/functions";
 
-export default (state:any, action:any) => {
+export const chemicalDataReducer = (state:any, action:any) => {
     switch (action.type) {
         case GET_CHEMICAL_DATA:
             return {
