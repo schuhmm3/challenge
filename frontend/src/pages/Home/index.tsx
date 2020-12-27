@@ -6,7 +6,7 @@ import { faBook } from "@fortawesome/free-solid-svg-icons";
 import { Layout } from "containers/Layout";
 /** Components */
 import { Searchbar } from "components/Searchbar";
-import { ResultBox } from "components/ResultBox";
+import { ResultBox } from "containers/ResultBox";
 import { DocumentCard } from "components/DocumentCard";
 import { Spinner } from "components/Spinner";
 /** Context  */
