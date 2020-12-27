@@ -1,10 +1,10 @@
 export type BasicTableProps = {
-    data:any[];
+    data: any[];
     tableColumnTitles: string[];
-    tableColumnHeaderTitles: string[];
-    onClickTableHeader: () => void;
+    onClickTableHeader: (objectProperty:string) => void;
     onClickTableRow: (patent:string) => void;
-    order?:boolean;
+    orderParam?: string;
+    isOrdered?: boolean;
     hasActions: boolean;
-    objectProperties:string[];
+    objectProperties: string[];
 }

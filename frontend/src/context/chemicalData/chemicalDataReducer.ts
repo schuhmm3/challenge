@@ -67,14 +67,14 @@ export const chemicalDataReducer = (state:any, action:any) => {
         case SORT_CHEMICAL_DATA:
             return {
                 ...state,
-                chemicalDataFiltered: state.chemicalData.sort(
+                chemicalDataFiltered: state.chemicalDataFiltered.sort(
                     dynamicSort(action.payload[0], action.payload[1])
                 ),
             };
         case SORT_CHEMICAL_DATA_2:
             return {
                 ...state,
-                chemicalData2Filtered: state.chemicalData2.sort(
+                chemicalData2Filtered: state.chemicalData2Filtered.sort(
                     dynamicSort(action.payload[0], action.payload[1])
                 ),
             };

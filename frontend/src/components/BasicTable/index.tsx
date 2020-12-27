@@ -12,7 +12,7 @@ import { BASE_URL_PATENT_REDIRECT } from "constants/urls";
 /** Styles */
 import "./style/basicTable.scss";
 
-export const BasicTable = ({ data, tableColumnTitles, tableColumnHeaderTitles, onClickTableHeader, onClickTableRow, order, hasActions, objectProperties } : BasicTableProps) => {
+export const BasicTable = ({ data, tableColumnTitles, onClickTableHeader, onClickTableRow, orderParam, isOrdered, hasActions, objectProperties } : BasicTableProps) => {
 
     const [isModalOpen, setModalIsOpen] = useState(false);
     const [patentNumber, setPatentNumber] = useState("");
@@ -47,11 +47,13 @@ export const BasicTable = ({ data, tableColumnTitles, tableColumnHeaderTitles, o
     };
 
     const renderHeader = () => {
-        return tableColumnHeaderTitles.map((key, index) => {
+        return tableColumnTitles.map((key:string, index: number) => {
            return (
                 <th key={index}>
-                    <div>{`${key} Wtf`}</div>
-                    <div><FontAwesomeIcon icon={order ? faSortUp : faSortDown}></FontAwesomeIcon></div>
+                    <div>{key}</div>
+                    <div onClick={() => onClickTableHeader(key)}>
+                       {<FontAwesomeIcon icon={orderParam === key && isOrdered? faSortUp : faSortDown} />} 
+                    </div>
                 </th>
            );
         });
@@ -59,7 +61,7 @@ export const BasicTable = ({ data, tableColumnTitles, tableColumnHeaderTitles, o
 
     const renderBody = () => {
         return (
-            data.map(( row:any,index:number ) => {
+            data.map((row:any, index:number ) => {
                 return (
                     <tr key={index} onClick={() => onClickTableRow(row[objectProperties[0]])}>
                         {
@@ -83,7 +85,7 @@ export const BasicTable = ({ data, tableColumnTitles, tableColumnHeaderTitles, o
     return (
         <>
             <table className="basicTable">
-                <thead onClick={() => onClickTableHeader()}>
+                <thead>
                     <tr>{renderHeader()}</tr>
                 </thead>
                 <tbody>{renderBody()}</tbody>
