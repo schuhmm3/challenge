@@ -9,11 +9,11 @@ import {
     SORT_CHEMICAL_DATA,
     SORT_CHEMICAL_DATA_2,
     GET_CHEMICAL_ELEMENT,
-} from "../types";
+} from "./types";
 
 import { dynamicSort } from "utils/functions";
 
-export default (state:any, action:any) => {
+export const chemicalDataReducer = (state:any, action:any) => {
     switch (action.type) {
         case GET_CHEMICAL_DATA:
             return {
@@ -67,14 +67,14 @@ export default (state:any, action:any) => {
         case SORT_CHEMICAL_DATA:
             return {
                 ...state,
-                chemicalDataFiltered: state.chemicalData.sort(
+                chemicalDataFiltered: state.chemicalDataFiltered.sort(
                     dynamicSort(action.payload[0], action.payload[1])
                 ),
             };
         case SORT_CHEMICAL_DATA_2:
             return {
                 ...state,
-                chemicalData2Filtered: state.chemicalData2.sort(
+                chemicalData2Filtered: state.chemicalData2Filtered.sort(
                     dynamicSort(action.payload[0], action.payload[1])
                 ),
             };

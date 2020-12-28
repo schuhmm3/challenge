@@ -1,8 +1,10 @@
 import React from "react";
-/** style */
+/** Types */
+import { DocumentCardProps} from "./types";
+/** Style */
 import "./style/documentCard.scss";
 
-export const DocumentCard = ({ children }:any) => {
+export const DocumentCard = ({ children }: DocumentCardProps) => {
     return(
         <div className="documentCard">
             <div className="documentCard__content">

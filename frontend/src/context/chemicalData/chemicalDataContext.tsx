@@ -4,18 +4,18 @@ export type ChemicalData = {
   id: number;
   patent_number: string;
   patent_title: string;
-  chemical_type_1: string;
+  chemical_type: string;
 }
 
 interface IContextTypes {
   query: string;
-  chemicalData: ChemicalData[] | any[];
-  chemicalDataFiltered: ChemicalData[] | any[];
-  chemicalData2: ChemicalData[] | any[];
-  chemicalData2Filtered: ChemicalData[] | any[];
+  chemicalData: ChemicalData[];
+  chemicalDataFiltered: ChemicalData[];
+  chemicalData2: ChemicalData[];
+  chemicalData2Filtered: ChemicalData[];
   chemicalDataElement: null;
-  chemicalTypeDocs: any[];
-  chemicalTypeDocs2: any[];
+  chemicalTypeDocs: ChemicalData[];
+  chemicalTypeDocs2: ChemicalData[];
   getChemicalData: (query: string) => void;
   getChemicalData2: (query: string) => void;
   setQueryData: (query: string) => void;

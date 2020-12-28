@@ -9,7 +9,7 @@ import { Button } from "components/Button";
 /** Context  */
 import { ChemicalDataContext } from "context/chemicalData/chemicalDataContext";
 /** Constants */
-import { tableColumnTitlesDocsKeys, tableColumnTHeaderTitleDocs } from "constants/tableColumnTitles";
+import { tableColumnTitlesDocsKeys } from "constants/tableColumnTitles";
 import { DOCUMENTS_PAGE_TITLE, GO_BACK_TEXT_BUTTON } from "constants/texts";
 /** Styles */
 import "./style/document.scss";
@@ -34,10 +34,10 @@ export const Document = () => {
                     <BasicTable 
                         data={chemicalTypeDocs} 
                         tableColumnTitles={tableColumnTitlesDocsKeys} 
-                        tableColumnHeaderTitles={tableColumnTHeaderTitleDocs}
                         onClickTableHeader={() => ({})}
                         onClickTableRow={() => ({})}
                         hasActions={true}
+                        objectProperties={tableColumnTitlesDocsKeys}
                     />
                 </div>
                 <div className= "documents__button">

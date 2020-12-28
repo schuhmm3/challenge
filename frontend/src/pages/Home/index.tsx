@@ -6,7 +6,7 @@ import { faBook } from "@fortawesome/free-solid-svg-icons";
 import { Layout } from "containers/Layout";
 /** Components */
 import { Searchbar } from "components/Searchbar";
-import { ResultBox } from "components/ResultBox";
+import { ResultBox } from "containers/ResultBox";
 import { DocumentCard } from "components/DocumentCard";
 import { Spinner } from "components/Spinner";
 /** Context  */
@@ -14,11 +14,12 @@ import { ChemicalDataContext } from "context/chemicalData/chemicalDataContext";
 /** Utils */
 import { countTotalUniquePatents } from "utils/functions";
 /** Constants */
-import { TOTAL_DOCUMENTS, SPINNER_MESSAGE, SEARCHBAR_PLACEHOLDER, NO_RESULTS_FOUND, TEXT_TABLE_1, TEXT_TABLE_2, CHEMICAL_TYPE_1, CHEMICAL_TYPE_2 } from "constants/texts";
+import { TOTAL_DOCUMENTS, SPINNER_MESSAGE, SEARCHBAR_PLACEHOLDER, NO_RESULTS_FOUND, TEXT_TABLE_1, TEXT_TABLE_2, CHEMICAL_TYPE_1, CHEMICAL_TYPE_2, ERROR_CONNECTION_MESSAGE, SEARCHBAR_ICONNAME } from "constants/texts";
 /** Assets */
 import LogoBasf from "assets/png/basf-logo-transparent.png";
 /** Styles */
 import "./style/home.scss";
+
 export const Home = () => {
     const chemicalDataContext = useContext(ChemicalDataContext);
     const { chemicalData, chemicalData2, chemicalDataFiltered, chemicalData2Filtered, query, getChemicalData, getChemicalData2, setQueryData, clearChemicalData } = chemicalDataContext;
@@ -67,8 +68,14 @@ export const Home = () => {
                     </DocumentCard>
                 </div>
                 <div className = "homePage-content__results">
-                        <ResultBox title={TEXT_TABLE_1} data={chemicalDataFiltered} type={CHEMICAL_TYPE_1}/>
-                        <ResultBox title={TEXT_TABLE_2} data={chemicalData2Filtered} type={CHEMICAL_TYPE_2}/>
+                        {
+                            chemicalDataFiltered && Array.isArray(chemicalDataFiltered) ? (
+                                <>
+                                    <ResultBox title={TEXT_TABLE_1} data={chemicalDataFiltered} type={CHEMICAL_TYPE_1}/>
+                                    <ResultBox title={TEXT_TABLE_2} data={chemicalData2Filtered} type={CHEMICAL_TYPE_2}/>
+                                </>
+                            ) : ERROR_CONNECTION_MESSAGE
+                        }
                 </div>
             </>
         )
@@ -87,13 +94,13 @@ export const Home = () => {
                             placeholder={SEARCHBAR_PLACEHOLDER}
                             onChange={(query: string) => handleQuerySearch(query)}
                             onClickSearchbar={() => submitQuery()}
-                            iconName={"search"}
+                            iconName={SEARCHBAR_ICONNAME}
                             hasKeyPress={true}
                         />
                     </div>
                         {
                             loading 
-                               ? <Spinner message={SPINNER_MESSAGE} size={200} />
+                               ? <Spinner message={SPINNER_MESSAGE} size={"xl"} />
                                : ( chemicalData.length > 0 ? renderResults() : isSubmited && NO_RESULTS_FOUND )
                         }
 

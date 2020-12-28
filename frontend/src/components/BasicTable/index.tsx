@@ -9,11 +9,10 @@ import { BasicTableProps } from "./types";
 /** Constants */
 import { MODAL_BODY_MESSAGE, MODAL_HEADER_MESSAGE, MODAL_BUTTON_CONFIRM, MODAL_BUTTON_CANCEL } from "constants/texts";
 import { BASE_URL_PATENT_REDIRECT } from "constants/urls";
-import { TRANSPARENT_COLOR } from "constants/colors";
 /** Styles */
 import "./style/basicTable.scss";
 
-export const BasicTable = ({ data, tableColumnTitles, tableColumnHeaderTitles, onClickTableHeader, onClickTableRow, order, hasActions } : BasicTableProps) => {
+export const BasicTable = ({ data, tableColumnTitles, onClickTableHeader, onClickTableRow, orderParam, isOrdered, hasActions, objectProperties } : BasicTableProps) => {
 
     const [isModalOpen, setModalIsOpen] = useState(false);
     const [patentNumber, setPatentNumber] = useState("");
@@ -39,8 +38,6 @@ export const BasicTable = ({ data, tableColumnTitles, tableColumnHeaderTitles, o
                 cancelButtonText={MODAL_BUTTON_CANCEL}
                 setModalIsOpen={setModalIsOpen}
                 handleConfirmAction={() => redirectToExternalUrl()}
-                cancelButtonColor={TRANSPARENT_COLOR}
-                confirmationButtonColor={TRANSPARENT_COLOR}
             >
                 <div className="modal">
                     {MODAL_BODY_MESSAGE}
@@ -50,11 +47,13 @@ export const BasicTable = ({ data, tableColumnTitles, tableColumnHeaderTitles, o
     };
 
     const renderHeader = () => {
-        return tableColumnHeaderTitles.map((key, index) => {
+        return tableColumnTitles.map((key:string, index: number) => {
            return (
                 <th key={index}>
                     <div>{key}</div>
-                    <div><FontAwesomeIcon icon={order ? faSortUp : faSortDown}></FontAwesomeIcon></div>
+                    <div onClick={() => onClickTableHeader(key)}>
+                       {<FontAwesomeIcon icon={orderParam === key && isOrdered? faSortUp : faSortDown} />} 
+                    </div>
                 </th>
            );
         });
@@ -62,10 +61,9 @@ export const BasicTable = ({ data, tableColumnTitles, tableColumnHeaderTitles, o
 
     const renderBody = () => {
         return (
-            data &&
-            data.map(( row:any,index:number ) => {
+            data.map((row:any, index:number ) => {
                 return (
-                    <tr key={index} onClick={() => onClickTableRow(row.chemical_type)}>
+                    <tr key={index} onClick={() => onClickTableRow(row[objectProperties[0]])}>
                         {
                             tableColumnTitles.map((column, index) => {
                                 return <td key={index}>{row[column]}</td>
@@ -87,7 +85,7 @@ export const BasicTable = ({ data, tableColumnTitles, tableColumnHeaderTitles, o
     return (
         <>
             <table className="basicTable">
-                <thead onClick={() => onClickTableHeader()}>
+                <thead>
                     <tr>{renderHeader()}</tr>
                 </thead>
                 <tbody>{renderBody()}</tbody>

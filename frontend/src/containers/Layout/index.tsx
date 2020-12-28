@@ -1,6 +1,6 @@
 import React from "react";
 /** Components */
-import { Sidebar } from "components/Sidebar";
+import { Sidebar } from "containers/Sidebar";
 /** Types */
 import { LayoutType } from "./types";
 /** Style */

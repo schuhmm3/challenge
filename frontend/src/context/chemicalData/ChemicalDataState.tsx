@@ -1,6 +1,6 @@
 import React, { useReducer } from "react";
 import { ChemicalDataContext } from "./chemicalDataContext";
-import chemicalDataReducer from "./chemicalDataReducer";
+import { chemicalDataReducer } from "./chemicalDataReducer";
 import {
     getChemicalTypes,
     getChemicalTypes2,
@@ -18,7 +18,7 @@ import {
     SORT_CHEMICAL_DATA_2,
     GET_CHEMICAL_ELEMENT,
     FILTER_CHEMICAL_DATA_2,
-} from "../types";
+} from "./types";
 
 export const ChemicalDataState = ({ children }: any) => {
     const initialState = {
